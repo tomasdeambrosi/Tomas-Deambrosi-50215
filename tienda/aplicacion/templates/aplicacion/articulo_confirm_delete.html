@@ -1,0 +1,39 @@
+{% extends "aplicacion/index.html" %}
+{%load static%}
+
+
+{% block imagen %}
+    <img class="masthead-avatar mb-5" src="{% static 'assets/img/articulos.png' %}" alt="..." />
+{% endblock imagen %}
+
+
+{% block titulo %}
+    <h1 class="masthead-heading text-uppercase mb-0">Eliminar Artículo</h1>    
+{% endblock titulo %}
+
+
+{% block icono %}
+    <div class="divider-custom-icon"><i class="fa-solid fa-trash"></i></div>
+{% endblock icono %}     
+
+
+{% block buscar %}
+    
+{% endblock buscar %}
+
+
+{% block contenido %}
+    <div class="container my-3">
+        <form action="" method="POST">
+            {% csrf_token %}   
+            <div class="text-center">     
+                <h3 style="color: #dc3545">¿Desea eliminar el artículo?</h3>
+                <h3>{{ object }}</h3> 
+            </div>
+            <div class="text-center my-3">
+                <input type="submit" class="btn btn-block btn-lg" style="background: #dc3545; color: white; text-decoration: none" value="Eliminar">
+            </div>
+        </form>
+    </div>
+{% endblock contenido %}
+    

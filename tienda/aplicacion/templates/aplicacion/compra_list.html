@@ -1,0 +1,72 @@
+{% extends "aplicacion/index.html" %}
+{%load static%}
+
+
+{% block imagen %}
+    <img class="masthead-avatar mb-5" src="{% static 'assets/img/compras.png' %}" alt="..." />
+{% endblock imagen %}
+
+
+{% block titulo %}
+    <h1 class="masthead-heading text-uppercase mb-0">Compras</h1>
+{% endblock titulo %}
+    
+
+{% block icono %}
+    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+{% endblock icono %}  
+
+
+{% block buscar %}
+    
+{% endblock buscar %}
+
+
+{% block contenido %}
+
+    <table>
+        <tr>
+            <td><h2 class= "my-1 mx-3">Compras</h2></td>
+            <td>
+                <button type="button" class="btn btn-dark m-3">
+                    <a href="{% url 'compras_create' %}" style="color: white; font-weight: bold; text-decoration: none">Añadir</a>
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table table-striped m-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Distribuidor</th>
+                <th>Artículo</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for c in compra_list  %}
+            <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.fecha }}</td>
+                <td>{{ c.distribuidor }}</td>
+                <td>{{ c.articulo }}</td>
+                <td>{{ c.cantidad}}</td>
+                <td>
+                    <button type="button" class="btn" style="background: #0d6efd">
+                        <a href="{% url 'compras_update' c.id %}" style="color: white; text-decoration: none">
+                            Editar
+                        </a>
+                    </button>
+                    <button type="button" class="btn" style="background: #dc3545">
+                        <a href="{% url 'compras_delete' c.id %}" style="color: white; text-decoration: none">
+                            Borrar
+                        </a>
+                    </button> 
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}

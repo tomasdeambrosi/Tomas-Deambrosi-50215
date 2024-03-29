@@ -1,0 +1,35 @@
+{% extends "aplicacion/index.html" %}
+{%load static%}
+
+
+{% block imagen %}
+    
+{% endblock imagen %}
+    
+
+{% block titulo %}
+    <h1 class="masthead-heading text-uppercase mb-0">Registrar Usuario</h1>
+{% endblock titulo %}
+
+
+{% block icono %}
+    <div class="divider-custom-icon"><i class="fa-solid fa-user fa-xl"></i></i></div>
+{% endblock icono %}  
+    
+
+{% block buscar %}
+    
+{% endblock buscar %}
+
+
+{% block contenido %}
+    <div class="container m-3">
+        <form action = "" method = "post">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Registrarse" class="btn btn-dark my-2">
+        </form>           
+    </div>
+{% endblock contenido %}

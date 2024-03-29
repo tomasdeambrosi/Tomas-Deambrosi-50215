@@ -1,0 +1,60 @@
+{% extends "aplicacion/index.html" %}
+{%load static%}
+
+
+{% block imagen %}
+    <img class="masthead-avatar mb-5" src="{% static 'assets/img/clientes.png' %}" alt="..." />
+{% endblock imagen %}
+
+
+{% block titulo %}
+    <h1 class="masthead-heading text-uppercase mb-0">Clientes</h1>
+{% endblock titulo %}
+
+
+{% block icono %}
+    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+{% endblock icono %}  
+
+
+{% block buscar %}
+    
+{% endblock buscar %}
+
+
+{% block contenido %}
+
+    <div class="container m-1 p-0 d-flex">
+        <h2 class= "my-1 mx-3">Clientes</h2>
+        <button type="button" class="btn btn-dark m-1">
+            <a href="{% url 'clientes_create' %}" style="color: white; font-weight: bold; text-decoration: none">Añadir</a>
+        </button>
+    </div>
+
+
+    <div class="container">
+        <div class="row d-flex align-content-start flex-wrap">
+        {% for c in cliente_list  %}
+                <div class="col-2 text-center mx-3 my-3" style="border: solid 1px black; border-radius: 10px; background: #1abc9c">
+                    <h2 class="mt-2" style="color:white">#{{ c.id }}</h2>
+                    <h2>{{ c.nombre }}</h2>
+                    <h3>{{ c.apellido }}</h3>
+                    <h6>Tel: {{ c.telefono }}</h6>
+                    <div class="container p-3">
+                        <button type="button" class="btn" style="background: #0d6efd">
+                            <a href="{% url 'clientes_update' c.id %}" style="color: white; text-decoration: none">
+                                Editar
+                            </a>
+                        </button>
+                        <button type="button" class="btn" style="background: #dc3545">
+                            <a href="{% url 'clientes_delete' c.id %}" style="color: white; text-decoration: none">
+                                Borrar
+                            </a>
+                        </button> 
+                    </div>
+                </div>  
+
+        {% endfor %}
+        </div>
+    </div>
+{% endblock contenido %}
